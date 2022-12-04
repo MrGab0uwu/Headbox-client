@@ -1,8 +1,10 @@
 import React from 'react';
 import Login from '../components/Login';
 import loginJPG from '/login.jpg';
+import { URL } from '../config';
 
 function LoginPage() {
+	console.log(URL);
 	return (
 		<div className='bg-white h-screen w-screen grid grid-cols-2'>
 			<Login />

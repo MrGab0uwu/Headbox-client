@@ -26,7 +26,7 @@ export const login = async () =>
 	await axios({
 		method: 'GET',
 		withCredentials: true,
-		url: `${URL}/user`,
+		url: `https://headbox-server-production.up.railway.app/user`,
 	});
 
 export const logout = async () => {

@@ -18,26 +18,22 @@ export const AuthContextProvider = ({ children }) => {
 			return setUser({ username: 'User no exists' });
 		}
 
+		const userLogged = await login();
+		console.log('response', response);
+		console.log('user', userLogged);
+		setUser(userLogged.data);
 		setLogged(true);
-		setTimeout(async () => {
-			const userLogged = await login();
-			console.log(response);
-			console.log('user', userLogged);
-			setUser(userLogged.data);
-			console.log(user);
-			navigate('/dashboard');
-		}, 1000);
+		console.log(user);
+		navigate('/dashboard');
 	};
 
 	const logoutUser = async () => {
+		await logout();
+		console.log('logout....');
+		const userLogged = await login();
+		setUser(userLogged.data);
+		console.log('user', userLogged);
 		setLogged(false);
-		setTimeout(async () => {
-			await logout();
-			console.log('logout....');
-			const userLogged = await login();
-			setUser(userLogged.data);
-			console.log('user', userLogged);
-		}, 1000);
 	};
 
 	return (

@@ -16,6 +16,7 @@ import { TeacherContextProvider } from './context/TeacherContext';
 import { AuthContextProvider } from './context/AuthContext';
 import { SubjectContextProvider } from './context/SubjectContext';
 import { CareerContextProvider } from './context/CareerContext';
+
 function App() {
 	return (
 		<>
