@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-	const [user, setUser] = useState({ username: '' });
+	const [user, setUser] = useState({});
 	const [logged, setLogged] = useState(false);
 	const navigate = useNavigate();
 
@@ -18,13 +18,15 @@ export const AuthContextProvider = ({ children }) => {
 			return setUser({ username: 'User no exists' });
 		}
 
-		const userLogged = await login();
-		console.log('response', response);
-		console.log('user', userLogged);
-		setUser(userLogged.data);
-		setLogged(true);
-		console.log(user);
-		navigate('/dashboard');
+		if (response.status === 200) {
+			const userLogged = await login();
+			console.log('response', response);
+			console.log('user', userLogged);
+			setUser(userLogged.data);
+			setLogged(true);
+			console.log(user);
+			navigate('/dashboard');
+		}
 	};
 
 	const logoutUser = async () => {
