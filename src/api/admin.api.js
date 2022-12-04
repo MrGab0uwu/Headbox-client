@@ -1,7 +1,7 @@
 import axios from 'axios';
+import { URL } from '../config';
 
-export const getAdmins = async () =>
-	await axios.get('http://localhost:4000/login');
+export const getAdmins = async () => await axios.get(`${URL}/login`);
 
 export const createNewAdmin = async (newUser) =>
 	await axios({
@@ -11,7 +11,7 @@ export const createNewAdmin = async (newUser) =>
 			password: newUser.password,
 		},
 		withCredentials: true,
-		url: 'http://localhost:4000/register',
+		url: `${URL}/register`,
 	});
 
 export const getAdmin = async (newUser) =>
@@ -19,14 +19,14 @@ export const getAdmin = async (newUser) =>
 		method: 'POST',
 		data: newUser,
 		withCredentials: true,
-		url: 'http://localhost:4000/login',
+		url: `${URL}/login`,
 	});
 
 export const login = async () =>
 	await axios({
 		method: 'GET',
 		withCredentials: true,
-		url: 'http://localhost:4000/user',
+		url: `${URL}/user`,
 	});
 
 export const logout = async () => {
@@ -34,7 +34,7 @@ export const logout = async () => {
 		const response = await axios({
 			method: 'POST',
 			withCredentials: true,
-			url: 'http://localhost:4000/logout',
+			url: `${URL}/logout`,
 		});
 
 		console.log(response);
